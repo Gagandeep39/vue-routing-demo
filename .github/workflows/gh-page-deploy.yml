@@ -19,10 +19,8 @@ jobs:
           node-version: '15.x'
       - name: Make a production build
         run: |
-          npm install
-          npm run build
-        env:
-          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          yarn
+          yarn build
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@releases/v2
         env:
