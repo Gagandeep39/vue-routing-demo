@@ -20,6 +20,7 @@ export default {
   components: {
     UserItem,
   },
+  props: ['id'],
   inject: ['users', 'teams'],
   data() {
     return {
@@ -32,12 +33,12 @@ export default {
   },
   // Lifecycle hook
   created() {
-    this.loadMembers(this.$route);
+    this.loadMembers(this.id);
   },
   methods: {
-    loadMembers(route) {
-      const teamId = route.params.id;
-      const selectedTeam = this.teams.find((team) => team.id === teamId);
+    loadMembers(id) {
+      // const teamId = route.params.id;
+      const selectedTeam = this.teams.find((team) => team.id === id);
       const members = selectedTeam.members;
       const selectedMembers = [];
       for (const member of members) {
@@ -49,8 +50,8 @@ export default {
     },
   },
   watch: {
-    $route(newRoute) {
-      this.loadMembers(newRoute);
+    id(newId) {
+      this.loadMembers(newId);
     },
   },
 };
