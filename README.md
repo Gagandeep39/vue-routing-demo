@@ -18,6 +18,9 @@
   - [Named router view](#named-router-view)
   - [Controlling scroll behaviours](#controlling-scroll-behaviours)
   - [Router Guards](#router-guards)
+  - [meta](#meta)
+  - [Folder structure](#folder-structure)
+  - [Hints](#hints)
 
 ## Deployment
 
@@ -353,3 +356,20 @@ beforeRouteLeave(to, from, next) {
     if (confirm('Are you sure you want to leave')) next();
   },
 ```
+
+## meta
+
+- Allows storing variables in router confi
+  - eg. `meta: {needsAuth: true}`
+- These variables can later be used in logicl operation
+
+## Folder structure
+
+- We can use `pages` directoy to store components that are loaded using routing
+- Non routing related components can be stored in `components`
+
+## Hints
+
+- Vue gives error if we do not use a variable
+- Sometimes inbuild methods provides us with var we dont need
+- Error can be fixed by replacing parameter names as `_`, `_2`...
