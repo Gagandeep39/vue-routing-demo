@@ -8,6 +8,7 @@
   - [Route Styling](#route-styling)
   - [Programmatic Navigation](#programmatic-navigation)
   - [Passing Data with routes](#passing-data-with-routes)
+  - [Consideration](#consideration)
 
 ## Deployment
 
@@ -119,6 +120,7 @@ methods: {
 
 - Allows us to specify path variable
 - We can pass any string such as `/teams/abc`, `/teams/123`
+- Data can be fetched using `this.$router.params`
 
 ```js
 const router = createRouter({
@@ -128,3 +130,9 @@ createApp(App)
   .use(router)
   .mount('#app');
 ```
+
+## Consideration
+
+- If we call the same route from inside the route and different data, the data will not be updated
+- This behaviour can be fixed with `watcher`
+- Every time, route is changed $route is changed. Hence we can atch $route
