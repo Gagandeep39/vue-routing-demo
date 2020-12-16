@@ -33,13 +33,22 @@ const router = createRouter({
   ],
   linkActiveClass: 'active',
   scrollBehavior(to, from, savedPosition) {
-    console.log(to, from, savedPosition);
+    // console.log(to, from, savedPosition);
     // Scroll to previous position whn user clicks n bac
     // Saved position is not null on backpress
     if (savedPosition) return savedPosition;
     // Scroll to top when user clicks on a link
     return { left: 0, top: 0 };
   },
+});
+router.beforeEach((to, from, next) => {
+  // Excuted before each route
+  // to and from are both route objects. must call `next`.
+  // console.log('Global before each');
+  // console.log(to, from);
+  // next(false)
+  // next('/teams')
+  next();
 });
 createApp(App)
   .use(router)
