@@ -1,24 +1,22 @@
-# vue-routing-demo
+# Vue Routing
 
-## Project setup
-```
-yarn install
-```
+- [Vue Routing](#vue-routing)
+  - [Deployment](#deployment)
+  - [Description](#description)
+  - [Add routing](#add-routing)
+  - [Implementation](#implementation)
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Deployment
 
-### Compiles and minifies for production
-```
-yarn build
-```
+- Checkout deployment at https://gagandeep39.github.io/vue-routing-demo/
 
-### Lints and fixes files
-```
-yarn lint
-```
+## Description
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- Used to navigate across application
+- Allows implementing multipage concept
+
+## Add routing
+
+- `npm install --save vue-router` / `yarn add vue-router`
+
+## Implementation
