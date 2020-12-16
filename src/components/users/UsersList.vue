@@ -17,6 +17,11 @@ export default {
     UserItem,
   },
   inject: ['users'],
+  beforeRouteLeave(to, from, next) {
+    // Can be used to validate if chnges are saved
+    console.log('Before route leave');
+    if (confirm('Are you sure you want to leave')) next();
+  },
 };
 </script>
 
