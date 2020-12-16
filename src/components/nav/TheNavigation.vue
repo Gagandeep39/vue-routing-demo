@@ -10,6 +10,9 @@
           <!-- <button @click="setActivePage('users-list')">Users</button> -->
           <router-link to="/users">Users</router-link>
         </li>
+        <li>
+          <a @click="programmaticNavigation">Programmatic Navigation</a>
+        </li>
       </ul>
     </nav>
   </header>
@@ -23,6 +26,11 @@ export default {
   //     this.$emit('set-page', page);
   //   },
   // },
+  methods: {
+    programmaticNavigation() {
+      this.$router.push('/users')
+    },
+  },
 };
 </script>
 
