@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
 import TeamsList from './components/teams/TeamsList';
 import UsersList from './components/users/UsersList';
+import TeamMembers from './components/teams/TeamMembers';
 
 const router = createRouter({
   // createWebHistory() Use browsers buildt in history logic
@@ -10,8 +11,9 @@ const router = createRouter({
   routes: [
     { path: '/teams', component: TeamsList },
     { path: '/users', component: UsersList },
+    { path: '/teams/:id', component: TeamMembers },
   ],
-  linkActiveClass: 'active'
+  linkActiveClass: 'active',
 });
 createApp(App)
   .use(router)
