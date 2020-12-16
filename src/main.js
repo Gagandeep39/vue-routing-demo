@@ -1,10 +1,10 @@
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue';
-import TeamsList from './components/teams/TeamsList';
-import UsersList from './components/users/UsersList';
+import TeamsList from './components/pages/TeamsList';
+import UsersList from './components/pages/UsersList';
 import TeamMembers from './components/teams/TeamMembers';
-import NotFound from './components/nav/NotFound';
+import NotFound from './components/pages/NotFound';
 import TeamsFooter from './components/teams/TeamsFooter';
 
 const router = createRouter({
@@ -19,6 +19,7 @@ const router = createRouter({
         default: TeamsList,
         footer: TeamsFooter,
       },
+      meta: { needsAuth: true }, // Can be accssed using 'to.meta.needsAuth'
       children: [
         {
           path: '/teams/:id',
