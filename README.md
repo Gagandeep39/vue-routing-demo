@@ -10,6 +10,8 @@
   - [Passing Data with routes](#passing-data-with-routes)
   - [Consideration](#consideration)
   - [Passing data as prop](#passing-data-as-prop)
+  - [Redirect and alias](#redirect-and-alias)
+  - [Catch all routes](#catch-all-routes)
 
 ## Deployment
 
@@ -153,3 +155,15 @@ createApp(App)
   .use(router)
   .mount('#app');
 ```
+
+## Redirect and alias
+
+- Reirect is used to direct a route to another route (Causes route to change)
+  - `{ path: '/', redirect: '/teams' },`
+- Alias allows us to use different routes for same component
+  - `{ path: '/teams', component: TeamsList, alias: '/ }`
+
+## Catch all routes
+
+- `{ path: '/:notFound(.*)', redirect: '/' }`
+- Expression allow us to use a component for no matching routes `(.*)` implies all
