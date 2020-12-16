@@ -367,6 +367,7 @@ beforeRouteLeave(to, from, next) {
 
 - We can use `pages` directoy to store components that are loaded using routing
 - Non routing related components can be stored in `components`
+- All routing code can be stored in `router.js`
 
 ## Hints
 
