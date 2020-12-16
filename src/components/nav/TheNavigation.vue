@@ -51,7 +51,7 @@ li {
   margin: 0 2rem;
 }
 
-button {
+a {
   font: inherit;
   background: transparent;
   border: 1px solid transparent;
@@ -59,6 +59,8 @@ button {
   color: white;
   padding: 0.5rem 1.5rem;
   display: inline-block;
+  text-decoration: none;
+  background: transparent;
 }
 
 button:hover,
