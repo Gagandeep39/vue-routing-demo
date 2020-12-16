@@ -10,10 +10,20 @@ const router = createRouter({
   // createWebHistory() Use browsers buildt in history logic
   history: createWebHistory(), //Ensures user goes to previous page on back press
   routes: [
-    { path: '/', redirect: '/teams' },
-    { path: '/teams', component: TeamsList },
+    { path: '/', redirect: '/teams', name: 'teams' },
+    {
+      path: '/teams',
+      component: TeamsList,
+      children: [
+        {
+          path: '/teams/:id',
+          component: TeamMembers,
+          props: true,
+          name: 'team-member',
+        },
+      ],
+    },
     { path: '/users', component: UsersList },
-    { path: '/teams/:id', component: TeamMembers, props: true },
     { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
