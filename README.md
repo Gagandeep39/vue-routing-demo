@@ -9,6 +9,7 @@
   - [Programmatic Navigation](#programmatic-navigation)
   - [Passing Data with routes](#passing-data-with-routes)
   - [Consideration](#consideration)
+  - [Passing data as prop](#passing-data-as-prop)
 
 ## Deployment
 
@@ -136,3 +137,19 @@ createApp(App)
 - If we call the same route from inside the route and different data, the data will not be updated
 - This behaviour can be fixed with `watcher`
 - Every time, route is changed $route is changed. Hence we can atch $route
+
+## Passing data as prop
+
+- When we use `this.$route.parms`, the code gets tie to routig
+- It wil crash if code is executed without param
+- To preent this, we can convert route params to prop, which will make it more usable
+- ENable the flag in route configuration `props: true`
+
+```js
+const router = createRouter({
+  routes: [{ path: '/teams/:id', component: TeamMembers, props: true }],
+});
+createApp(App)
+  .use(router)
+  .mount('#app');
+```
