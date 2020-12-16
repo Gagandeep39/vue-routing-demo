@@ -32,6 +32,14 @@ const router = createRouter({
     { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to, from, savedPosition);
+    // Scroll to previous position whn user clicks n bac
+    // Saved position is not null on backpress
+    if (savedPosition) return savedPosition;
+    // Scroll to top when user clicks on a link
+    return { left: 0, top: 0 };
+  },
 });
 createApp(App)
   .use(router)
