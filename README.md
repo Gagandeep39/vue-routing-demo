@@ -14,6 +14,8 @@
   - [Catch all routes](#catch-all-routes)
   - [Nested Routes](#nested-routes)
   - [Named routes](#named-routes)
+  - [Query Params](#query-params)
+  - [Named router view](#named-router-view)
 
 ## Deployment
 
@@ -237,4 +239,55 @@ export default {
     },
   },
 };
+```
+
+## Query Params
+
+- Optional route parameter
+- Used in searches normally
+- Added by appending query: {} to the router object
+- Not defined in router config
+- Fetched using `this.$route.query`
+
+```js
+export default {
+  computed: {
+    teamRouter() {
+      return {
+        name: 'team-member',
+        params: { id: this.id },
+        query: { sort: 'asc' },
+      };
+    },
+  },
+};
+```
+
+## Named router view
+
+- Allows having multiple router views at same level
+- Load multiple component at same level
+- Doing this require us to specify which view to use, else the data will be rendered twice
+- We need to create multiple router-view and pass multiple components while routing
+
+```js
+// Pass multiple component
+{
+      path: '/teams',
+      // component: TeamsList,
+      components: {
+        default: TeamsList,
+        footer: TeamsFooter,
+      },
+    },
+```
+
+```html
+<!-- Render multiple router viewx -->
+<main>
+  <router-view></router-view>
+</main>
+<footer>
+  <router-view name="footer"></router-view>
+</footer>
 ```
