@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TeamsItem from './TeamsItem.vue';
+import TeamsItem from '../components/teams/TeamsItem';
 
 export default {
   components: {
