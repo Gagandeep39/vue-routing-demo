@@ -54,6 +54,11 @@ export default {
       this.loadMembers(newId);
     },
   },
+  // Executed when route updates
+  beforeRouteUpdate(to, from, next) {
+    console.log('Before Component route update');
+    next();
+  },
 };
 </script>
 

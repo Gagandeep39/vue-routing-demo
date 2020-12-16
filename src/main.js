@@ -28,7 +28,14 @@ const router = createRouter({
         },
       ],
     },
-    { path: '/users', component: UsersList },
+    {
+      path: '/users',
+      component: UsersList,
+      beforeEnter: (to, from, next) => {
+        console.log('Router level gyuard');
+        next();
+      },
+    },
     { path: '/:notFound(.*)', component: NotFound },
   ],
   linkActiveClass: 'active',
@@ -44,7 +51,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   // Excuted before each route
   // to and from are both route objects. must call `next`.
-  // console.log('Global before each');
+  console.log('Global before each');
   // console.log(to, from);
   // next(false)
   // next('/teams')

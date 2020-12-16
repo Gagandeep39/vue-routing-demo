@@ -17,6 +17,7 @@
   - [Query Params](#query-params)
   - [Named router view](#named-router-view)
   - [Controlling scroll behaviours](#controlling-scroll-behaviours)
+  - [Router Guards](#router-guards)
 
 ## Deployment
 
@@ -306,7 +307,13 @@ const router = createRouter({
   routes: [
     { path: '/', redirect: '/teams', name: 'teams' },
     { path: '/users', component: UsersList },
-    { path: '/:notFound(.*)', component: NotFound },
+    {
+      path: '/:notFound(.*)',
+      component: NotFound,
+      beforeEnter: (to, from, next) => {
+        console.log('Router level');
+      },
+    },
   ],
   linkActiveClass: 'active',
   scrollBehavior(to, from, savedPosition) {
@@ -319,3 +326,21 @@ const router = createRouter({
   },
 });
 ```
+
+## Router Guards
+
+- Useful for authentication, prevent user from leaving edit screen
+- Method automatically called when a route is called
+
+```js
+// Before each is executd before every route
+router.beforeEach((to, from, next) => {
+  // next(false) - Cancel routing
+  // next('/teams') - Redirect to 'teams' route
+  next(); // - Continue navigation
+});
+```
+
+- Can be added at root level i.e outside ruter or inside nested roues also
+- Order is - Global -> Router level -> Component level
+- Component level implies beforeEach((to, from, next) => {}) insie a comonent as a lifcycle hook
