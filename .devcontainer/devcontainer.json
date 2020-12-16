@@ -17,6 +17,7 @@
     "oderwat.indent-rainbow",
     "yzhang.markdown-all-in-one",
     "octref.vetur",
+    "mutantdino.resourcemonitor",
   ],
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
