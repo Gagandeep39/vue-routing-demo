@@ -16,6 +16,7 @@
   - [Named routes](#named-routes)
   - [Query Params](#query-params)
   - [Named router view](#named-router-view)
+  - [Controlling scroll behaviours](#controlling-scroll-behaviours)
 
 ## Deployment
 
@@ -290,4 +291,31 @@ export default {
 <footer>
   <router-view name="footer"></router-view>
 </footer>
+```
+
+## Controlling scroll behaviours
+
+- Allows automatically scroling as soon as we route to different page
+- Can be done by writing `scrollBehaviour()` method in router config
+- Improves UX
+
+```js
+const router = createRouter({
+  // createWebHistory() Use browsers buildt in history logic
+  history: createWebHistory(), //Ensures user goes to previous page on back press
+  routes: [
+    { path: '/', redirect: '/teams', name: 'teams' },
+    { path: '/users', component: UsersList },
+    { path: '/:notFound(.*)', component: NotFound },
+  ],
+  linkActiveClass: 'active',
+  scrollBehavior(to, from, savedPosition) {
+    console.log(to, from, savedPosition);
+    // Scroll to previous position whn user clicks n bac
+    // Saved position is not null on backpress
+    if (savedPosition) return savedPosition;
+    // Scroll to top when user clicks on a link
+    return { left: 0, top: 0 };
+  },
+});
 ```
