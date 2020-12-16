@@ -344,3 +344,12 @@ router.beforeEach((to, from, next) => {
 - Can be added at root level i.e outside ruter or inside nested roues also
 - Order is - Global -> Router level -> Component level
 - Component level implies beforeEach((to, from, next) => {}) insie a comonent as a lifcycle hook
+- `beforeRouteLeave` Shows a prompt if we try to navigate outside, it is aded at component level
+
+```js
+beforeRouteLeave(to, from, next) {
+    // Can be used to validate if chnges are saved
+    console.log('Before route leave');
+    if (confirm('Are you sure you want to leave')) next();
+  },
+```
