@@ -5,6 +5,7 @@ import TeamsList from './components/teams/TeamsList';
 import UsersList from './components/users/UsersList';
 import TeamMembers from './components/teams/TeamMembers';
 import NotFound from './components/nav/NotFound';
+import TeamsFooter from './components/teams/TeamsFooter';
 
 const router = createRouter({
   // createWebHistory() Use browsers buildt in history logic
@@ -13,7 +14,11 @@ const router = createRouter({
     { path: '/', redirect: '/teams', name: 'teams' },
     {
       path: '/teams',
-      component: TeamsList,
+      // component: TeamsList,
+      components: {
+        default: TeamsList,
+        footer: TeamsFooter,
+      },
       children: [
         {
           path: '/teams/:id',

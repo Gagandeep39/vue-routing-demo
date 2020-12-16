@@ -14,7 +14,11 @@ export default {
     teamRouter() {
       // return `/teams/${this.id}`
       // Here we are specifying name of route instead f path
-      return { name: 'team-member', params: { id: this.id } };
+      return {
+        name: 'team-member',
+        params: { id: this.id },
+        query: { sort: 'asc' },
+      };
     },
   },
 };
