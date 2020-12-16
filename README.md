@@ -12,6 +12,8 @@
   - [Passing data as prop](#passing-data-as-prop)
   - [Redirect and alias](#redirect-and-alias)
   - [Catch all routes](#catch-all-routes)
+  - [Nested Routes](#nested-routes)
+  - [Named routes](#named-routes)
 
 ## Deployment
 
@@ -167,3 +169,72 @@ createApp(App)
 
 - `{ path: '/:notFound(.*)', redirect: '/' }`
 - Expression allow us to use a component for no matching routes `(.*)` implies all
+
+## Nested Routes
+
+- Creating child level routes
+- Add routing inside a component
+- Can be adding using an array
+
+```js
+const router = createRouter({
+  routes: [
+    { path: '/', redirect: '/teams' },
+    {
+      path: '/teams',
+      component: TeamsList,
+      children: [{ path: ':id', component: TeamMembers, props: true }],
+    },
+  ],
+});
+createApp(App)
+  .use(router)
+  .mount('#app');
+```
+
+- To acces this route, we need to add a router-view inside TeamList component
+
+```html
+<template>
+  <router-view></router-view>
+  <!-- Rest of the code -->
+</template>
+```
+
+## Named routes
+
+- Allows specifying the name of route and the route in which the data should bdisplayed
+- Prevents us from updating code everytime name changes
+
+```js
+// Creating named route
+routes: [
+    { path: '/', redirect: '/teams', name: 'teams' },
+    {
+      path: '/teams',
+      component: TeamsList,
+      children: [
+        {
+          path: '/teams/:id',
+          component: TeamMembers,
+          props: true,
+          name: 'team-member',
+        },
+      ],
+    },
+  ],
+```
+
+```js
+// Acessing named route
+export default {
+  props: ['id', 'name', 'memberCount'],
+  computed: {
+    teamRouter() {
+      // return `/teams/${this.id}`
+      // Here we are specifying name of route instead f path
+      return { name: 'team-member', params: { id: this.id } };
+    },
+  },
+};
+```
